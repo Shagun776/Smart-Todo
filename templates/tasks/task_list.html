@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SmartTodo</title>
+</head>
+<body>
+
+    <h1>My Tasks</h1>
+
+    <a href="{% url 'task_create' %}">Add New Task</a>
+
+    <hr>
+
+    {% for task in tasks %}
+        <div>
+            <h3>{{ task.title }}</h3>
+
+            <p>{{ task.description }}</p>
+
+            {% if task.completed %}
+                <p>Status: Completed</p>
+            {% else %}
+                <p>Status: Pending</p>
+            {% endif %}
+
+            <a href="{% url 'task_update' task.pk %}">Edit</a>
+            |
+            <a href="{% url 'task_delete' task.pk %}">Delete</a>
+        </div>
+
+        <hr>
+
+    {% empty %}
+        <p>No tasks available.</p>
+    {% endfor %}
+
+</body>
+</html>

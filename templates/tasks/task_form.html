@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Form - SmartTodo</title>
+</head>
+<body>
+
+    <h1>Add / Edit Task</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Save Task</button>
+    </form>
+
+    <br>
+
+    <a href="{% url 'task_list' %}">Back to Tasks</a>
+
+</body>
+</html>
